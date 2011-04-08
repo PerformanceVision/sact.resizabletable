@@ -6,6 +6,17 @@ import copy
 
 
 class ResizableTable(Table):
+    """Auto-resizing replacement for the default Platypus table.
+
+    This class is meant to be used as a drop-in replacement for the default
+    Platypus Table. When the Reportlab engine computes the page layout,
+    the ResizableTable determines if it would fit inside the requested width,
+    and if not, scales down the padding and font size of its cells in
+    proportion.
+
+    It doesn't work with cell contents other than text.
+
+    """
 
     def __init__(self, *args, **kwargs):
 
@@ -16,6 +27,13 @@ class ResizableTable(Table):
 
 
     def wrap(self, availWidth, availHeight):
+        """Reimplementation of Table.wrap().
+
+        It works by mimicking the width calculation on a dummy Table, and if
+        the result warrant it, by scaling down the text and padding of each
+        cell.
+
+        """
 
         ## Create a standard Table with the same contents and style as ours.
         ## Use it to determine if it fits inside our available width.
