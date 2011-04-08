@@ -1,0 +1,12 @@
+INSTALLATION
+============
+
+sact.resizabletable uses the standard setuptools installation procedure. From
+the current directory, run:
+
+  python setup.py install
+
+Depending on your setup, you may need to run the above command as root.
+
+Buildout users will find a ready-to-use buildout.cfg file in the current
+directory.
