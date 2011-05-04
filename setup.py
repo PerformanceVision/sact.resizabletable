@@ -36,4 +36,5 @@ setup(
         'reportlab',
     ],
     entry_points={},
+    extras_require={'test': []},
 )
